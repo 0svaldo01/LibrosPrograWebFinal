@@ -1,0 +1,14 @@
+﻿@model LibrosPrograWebFinal.Models.Libros
+
+<h1>Detalles del Libro</h1>
+<div style="border: 1px solid #ddd; padding: 20px; max-width: 600px; margin: auto; display: flex; align-items: flex-start; gap: 20px;">
+    <img src="~/images/blank.png" style="height: 50px; width: 50px;">
+    <div>
+        <h2>@Model.Titulo</h2>
+        <p><strong>Autor:</strong>@Model.IdAutorNavigation.NombreAutor</p>
+        <p><strong>Año de Publicación:</strong> @Model.AñoPublicacion</p>
+        <p><strong>Género:</strong> @Model.IdGeneroNavigation.NombreGenero</p>
+        <p><strong>Sinopsis:</strong>@Model.Descripcion</p>
+        <a href="~/Home/Index" style="display: inline-block; text-decoration:none; margin-top: 10px;">Volver a la Lista</a>
+    </div>
+</div>
