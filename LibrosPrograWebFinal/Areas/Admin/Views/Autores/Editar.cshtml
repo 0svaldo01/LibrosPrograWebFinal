@@ -1,0 +1,28 @@
+﻿@model LibrosPrograWebFinal.Models.Autores
+
+<h2>Editar Autor</h2>
+
+<form method="post" action="~/Admin/Autores/Editar">
+    <div>
+        <input type="hidden" value="@Model.IdAutor" name="IdAutor" />
+
+        <label for="NombreAutor">Nombre Completo:</label>
+        <input type="text"  name="NombreAutor" value="@Model.NombreAutor" required />
+    </div>
+    <div>
+        <label for="FechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" name="FechaNacimiento" value="@Model.FechaNacimiento.Value" required  />
+    </div>
+    <div>
+        <label for="Nacionalidad">Nacionalidad:</label>
+        <input type="text" name="Nacionalidad" value="@Model.Nacionalidad" required />
+    </div>
+    <button type="submit">Aceptar </button>
+</form>
+
+<h3 style="color:red;">
+    @Html.ValidationSummary()
+</h3>
+
+<a>Volver a la lista</a>
+

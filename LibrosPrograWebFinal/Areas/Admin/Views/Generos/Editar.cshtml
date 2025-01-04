@@ -1,0 +1,20 @@
+﻿@model LibrosPrograWebFinal.Models.Generosliterarios
+
+<h2>Editar Genero literario</h2>
+
+<form method="post" action="~/Admin/Generos/Editar">
+    <div>
+        <input type="hidden" value="@Model.IdGenero" name="IdGenero" />
+
+        <label for="NombreAutor">Nombre Completo:</label>
+        <input type="text" name="NombreGenero" value="@Model.NombreGenero" required />
+    </div>
+    <button type="submit">Aceptar </button>
+</form>
+
+<h3 style="color:red;">
+    @Html.ValidationSummary()
+</h3>
+
+<a href="~/Admin/Generos/Index">Volver a la lista</a>
+

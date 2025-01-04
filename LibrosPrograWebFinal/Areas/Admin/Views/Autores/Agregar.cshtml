@@ -1,0 +1,24 @@
+﻿@model LibrosPrograWebFinal.Models.Autores
+
+<h2>Agregar Autor</h2>
+
+<form method="post" action="~/Admin/Autores/Agregar">
+    <div>
+        <label for="NombreAutor">Nombre Completo:</label>
+        <input type="text" id="NombreAutor" name="NombreAutor" required />
+    </div>
+    <div>
+        <label for="FechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="FechaNacimiento" name="FechaNacimiento" required />
+    </div>
+    <div>
+        <label for="Nacionalidad">Nacionalidad:</label>
+        <input type="text" id="Nacionalidad" name="Nacionalidad" required />
+    </div>
+    <button type="submit">Agregar</button>
+</form>
+
+<h3 style="color:red;">
+    @Html.ValidationSummary()
+</h3>
+<a href="~/Admin/Autores/Index">Volver a la lista</a>

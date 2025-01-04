@@ -1,0 +1,21 @@
+﻿@model IEnumerable<LibrosPrograWebFinal.Models.Autores>
+@{
+	Layout = "_Layout";
+}
+<h1>Autores Registrados</h1>
+<a style="text-decoration:none"; href="~/Admin/Autores/Agregar"><strong>Agregar Autor</strong><span style="margin:20px; font-size:15px;color:red;">+</span></a>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start;">
+    @foreach (var autor in Model)
+    {
+        <input type="hidden" value="@autor.IdAutor"/>
+        <div style="border: 1px solid #ccc; padding: 16px; width: 250px; border-radius: 4px;">
+            <h3>@autor.NombreAutor</h3>
+            <p><strong>Fecha de Nacimiento:</strong> @autor.FechaNacimiento?.ToString("dd-MM-yyyy")</p>
+            <p><strong>Nacionalidad:</strong> @autor.Nacionalidad</p>
+            <div>
+                <a href="~/Admin/Autores/Editar/@autor.IdAutor">Editar</a> |
+                <a href="~/Admin/Autores/Eliminar/@autor.IdAutor">Eliminar</a>
+            </div>
+        </div>
+    }
+</div>
