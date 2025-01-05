@@ -1,0 +1,36 @@
+﻿<!DOCTYPE Html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/styles.css" rel="stylesheet" />
+    <title>Iniciar Sesión</title>
+</head>
+<body class="login">
+    <header></header>
+
+    <main>
+
+        <form method="post" action="~/Account/Login" class="form">
+            <div>
+                <h1>Iniciar sesión</h1>
+
+
+                <input type="text" required="required" name="user" id="txtNumC" placeholder="Usuario" />
+
+                <input type="password" required="required" name="password" id="txtPassword" placeholder="Contraseña" />
+
+                <div class="botonera">
+                    <p id="error">
+                        @Html.ValidationSummary();
+                    </p>
+                    <input type="submit" value="Entrar" />
+
+                </div>
+            </div>
+        </form>
+
+
+    </main>
+</body>
+</html>

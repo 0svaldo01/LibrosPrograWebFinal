@@ -13,6 +13,7 @@ namespace LibrosPrograWebFinal.Controllers
         {
 			this.context = context;
 		}
+        [Route("/")]
         public IActionResult Index()
 		{
 			var datos = context.Libros.OrderBy(x => x.Titulo).Include(x => x.IdGeneroNavigation).Include(x=>x.IdAutorNavigation);
