@@ -1,4 +1,4 @@
 ﻿@{
-	Layout = "_Layout";
+	Layout = "_LayoutAdmin";
 }
 <h1>Hola @User.Identity.Name  Id: @(User.Claims.FirstOrDefault(x => x.Type == "IdUsuario").Value) </h1>

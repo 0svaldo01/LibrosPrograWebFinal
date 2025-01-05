@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FruitStore - La mejor fruteria de la Web</title>
+    <link href="~/styles.css" rel="stylesheet" />
+</head>
+<body class="adminLayout">
+    <header></header>
+    <nav>
+        <a href="~/Admin">Principal</a>
+        @if (User.IsInRole("Administrador"))
+        {
+                 <a href="~/Admin/Autores">Administrar Autores</a>
+        }
+       
+        <a href="~/Admin/Generos">Administrar Generos</a>
+        <a href="~/Account/Logout">Cerrar sesión</a>
+    </nav>
+    <main>
+        @RenderBody()
+    </main>
+</body>
+</html>
