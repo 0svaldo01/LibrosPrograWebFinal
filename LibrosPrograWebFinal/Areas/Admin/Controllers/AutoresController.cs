@@ -1,5 +1,6 @@
 ﻿using LibrosPrograWebFinal.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibrosPrograWebFinal.Areas.Admin.Controllers
 {
@@ -116,13 +117,20 @@ namespace LibrosPrograWebFinal.Areas.Admin.Controllers
         public IActionResult Eliminar(Autores a)
         {
             var autelim = context.Autores.FirstOrDefault(x => x.IdAutor == a.IdAutor);
+            var autlibros = context.Libros.Any(x => x.IdAutor == a.IdAutor);
 
-            if (autelim != null)
+            if (autlibros)
+            {
+                ModelState.AddModelError("", "No se puede eliminar un autor con libros regitrados a su nombre");
+            }
+
+            if (ModelState.IsValid && autelim != null && autlibros == false)
             {
                 context.Remove(autelim);
                 context.SaveChanges();
                 return Redirect("~/Admin/Autores/Index");
             }
+            
             return View(autelim);
         }
     }

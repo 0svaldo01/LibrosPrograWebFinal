@@ -108,8 +108,14 @@ namespace LibrosPrograWebFinal.Areas.Admin.Controllers
         public IActionResult Eliminar(Generosliterarios g)
         {
             var genelm = context.Generosliterarios.FirstOrDefault(x => x.IdGenero == g.IdGenero);
+            var librosgen = context.Libros.Any(x => x.IdGenero == g.IdGenero);
 
-            if (genelm != null)
+            if (librosgen)
+            {
+                ModelState.AddModelError("", "No se puede eliminar un genero con libros asociados al mismo");
+            }
+
+            if (ModelState.IsValid && genelm != null && librosgen == false)
             {
                 context.Remove(genelm);
                 context.SaveChanges();

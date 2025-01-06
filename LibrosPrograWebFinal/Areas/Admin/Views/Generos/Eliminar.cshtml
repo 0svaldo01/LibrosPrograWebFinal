@@ -1,23 +1,18 @@
 ﻿@model LibrosPrograWebFinal.Models.Generosliterarios
-@{
-    Layout = "_LayoutAdmin";
-}
-<div class="agg">
-    <h2>Eliminar Genero</h2>
 
+<h2>Eliminar Genero</h2>
 
+<p>¿Estás seguro de que deseas eliminar este genero?</p>
 
-    <form method="post" action="~/Admin/Generos/Eliminar">
-        <div>
-            <h3 id="h3">¿Estás seguro de que deseas eliminar este genero?</h3>
-            <input type="hidden" name="IdGenero" value="@Model.IdGenero" />
+<form method="post" action="~/Admin/Generos/Eliminar">
+    <input type="hidden" name="IdGenero" value="@Model.IdGenero" />
 
-            <label><strong>Nombre del genero:</strong></label><br />
-            <input type="text" name="NombreGenero" value="@Model.NombreGenero" readonly /><br />
+    <p><strong>Nombre Completo:</strong></p><br />
+    <input type="text" name="NombreGenero" value="@Model.NombreGenero" readonly /><br />
 
-            <button type="submit">Eliminar</button>
-        </div>
-
-        <a href="~/Admin/Generos/Index" id="backC">Cancelar</a>
-    </form>
+    <button type="submit">Eliminar</button>
+</form>
+<div>
+    <p style="color:red; font-size:16px;">@Html.ValidationSummary()</p>
 </div>
+<a href="~/Admin/Generos/Index">Cancelar</a>
