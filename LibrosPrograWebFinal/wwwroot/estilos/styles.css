@@ -1,0 +1,245 @@
+html {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.login h1{
+    margin-top: 0;
+    color: black;
+    text-align: center;
+    font-size: 2.5em;
+    color: #49724B;
+}
+
+.login{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    height: inherit;
+    
+    background-size: cover;
+    background-color: #49724B;
+    background-position: center;
+}
+
+.form{
+    width: 420px;
+    background: transparent;
+    border: rgba(255, 255, 255, .2);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 30px;
+    padding: 30px 40px;
+    background-color: white;
+}
+
+.form h2{
+    border: none;
+    padding: 0px;
+    font-size:36px ;
+    text-align: center;
+}
+
+.form #txtNumC, #txtPassword{
+    width: 100%;
+    margin-left: -5px;
+    border-radius: 20px;
+    height: 45px;
+    margin-top: 7px;
+    border: solid #49724B 1px;
+}
+
+.form input::placeholder{
+    color: #49724B;
+    padding-left: 10px;
+}
+
+
+.form label{
+    display: flex;
+    width: 350px;
+    font-size: 14.5px;
+    margin-top: -22.5px;
+}
+
+.form #txtMantener{
+    margin: 10px 0px 10px 0px;
+}
+
+.form .botonera input[type=submit] {
+    width: 101%;
+    height: 45px;
+    background: #49724B;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+    font-weight: 600;
+    margin-top: 7px;
+    margin-left: -3px;
+}
+.form .botonera input[type=submit]:hover {
+    background-color: white;
+    border: 2px solid #49724B;
+    color: #49724B;
+    
+}
+
+
+/*ADMIN LAYOUT*/
+.adminLayout nav {
+    box-sizing: border-box;
+    background-color: #49724B;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+}
+
+    .adminLayout nav a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.3em;
+        padding-left: 20px;
+    }
+
+    /*INDEX DE AUTORES*/
+.indexAutores {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+    .indexAutores .container {
+        margin: auto;
+        width: 97%;
+        display:flex;
+        flex-wrap:wrap;
+        gap:16px;
+        align-items:flex-start;
+      
+            
+    }
+
+        .indexAutores .container .info {
+            margin: auto;
+            border: #49724B 1px solid;
+            padding: 16px;
+            width: 250px;
+            border-radius: 4px;
+        }
+
+    .indexAutores h1 {
+        text-align: center;
+        margin-bottom:20px;
+    }
+
+    .indexAutores h3 {
+        margin: 0;
+        padding: 0;
+    }
+
+    .indexAutores .container .info div {
+        text-align: right;
+    }
+
+    .indexAutores div a {
+        text-decoration: none;
+        color: #49724B;
+    }
+
+    .indexAutores .a {
+        text-align: right;
+        color: #49724B;
+        margin: 10px 10px 10px 1350px;
+    }
+
+/*AGREGAR/EDITAR*/
+
+.agg h2 {
+    margin-top:15px;
+    text-align: center;
+}
+
+.agg form {
+    width: 500px;
+    border-radius: 0;
+    margin: 30px auto;
+    color: black;
+    box-shadow: none;
+    border: 1px solid #49724B;
+}
+
+    .agg form label {
+        margin: 15px;
+    }
+
+.agg #h3 {
+    margin: 0;
+    text-align: center;
+    height: 35px;
+    line-height: 35px;
+    background-color: #49724B;
+    color: white;
+}
+
+.agg form input {
+    width: 93%;
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #49724B;
+    height: 25px;
+}
+
+.agg form button {
+    width: 93%;
+    text-align: center;
+    background-color: #49724B;
+    color: white;
+    margin-left: 18px;
+    margin-bottom: 10px;
+}
+
+.agg form #back {
+    margin-left: 367px;
+    display: inline;
+    text-align: right;
+    color: #49724B;
+}
+
+.agg #error {
+    text-align: center;
+}
+
+.agg form button {
+    height: 30px;
+    font-size: 1.1em;
+}
+
+    .agg form button:hover {
+        background-color: white;
+        border: #49724B 2px solid;
+        cursor: pointer;
+        color: #49724B;
+    }
+
+.agg form #backC{
+    margin-left: 415px;
+    display: inline;
+    text-align: right;
+    color: #49724B;
+    margin-bottom:15px;
+}
+
+.indexAutores .aG {
+    text-align: right;
+    color: #49724B;
+    margin: 10px 10px 10px 1370px;
+}

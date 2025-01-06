@@ -1,28 +1,39 @@
 ﻿@model LibrosPrograWebFinal.Models.Autores
+@{
+    Layout = "_LayoutAdmin";
+}
 
-<h2>Editar Autor</h2>
+<div class="agg">
+    <h2>Editar Autor</h2>
 
-<form method="post" action="~/Admin/Autores/Editar">
-    <div>
-        <input type="hidden" value="@Model.IdAutor" name="IdAutor" />
+    <form method="post" action="~/Admin/Autores/Editar">
 
-        <label for="NombreAutor">Nombre Completo:</label>
-        <input type="text"  name="NombreAutor" value="@Model.NombreAutor" required />
-    </div>
-    <div>
-        <label for="FechaNacimiento">Fecha de Nacimiento:</label>
-        <input type="date" name="FechaNacimiento" value="@Model.FechaNacimiento.Value" required  />
-    </div>
-    <div>
-        <label for="Nacionalidad">Nacionalidad:</label>
-        <input type="text" name="Nacionalidad" value="@Model.Nacionalidad" required />
-    </div>
-    <button type="submit">Aceptar </button>
-</form>
+        <div>
+            <h3 id="h3">Datos a editar</h3>
+            <div>
+                <input type="hidden" value="@Model.IdAutor" name="IdAutor" />
 
-<h3 style="color:red;">
-    @Html.ValidationSummary()
-</h3>
+                <label for="NombreAutor">Nombre Completo:</label>
+                <input type="text" name="NombreAutor" value="@Model.NombreAutor" required />
+            </div>
+            <div>
+                <label for="FechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" name="FechaNacimiento" value="@Model.FechaNacimiento.Value" required />
+            </div>
+            <div>
+                <label for="Nacionalidad">Nacionalidad:</label>
+                <input type="text" name="Nacionalidad" value="@Model.Nacionalidad" required />
+            </div>
+            <button type="submit">Aceptar </button>
+        </div>
 
-<a>Volver a la lista</a>
+        <h3 style="color:red;" id="error">
+            @Html.ValidationSummary()
+        </h3>
+
+        <a id="back" href="~/Admin/Autores/Index">Volver a la lista</a>
+    </form>
+</div>
+
+
 

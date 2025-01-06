@@ -1,17 +1,28 @@
 ﻿@model LibrosPrograWebFinal.Models.Generosliterarios
+@{
+    Layout = "_LayoutAdmin";
+}
 
-<h2>Agregar Generos Literarios</h2>
+<div class="agg">
+    <h2>Agregar Generos Literarios</h2>
 
-<form method="post" action="~/Admin/Generos/Agregar">
-    <div>
-        <label for="NombreAutor">Nombre Completo:</label>
-        <input type="text" name="NombreGenero" required />
-    </div>
+    <form method="post" action="~/Admin/Generos/Agregar">
+        <div>
+            <h3 id="h3">Genero</h3>
+            <div>
+                <label for="NombreAutor">Nombre del Genero:</label>
+                <input type="text" name="NombreGenero" required />
+            </div>
 
-    <button type="submit">Agregar</button>
-</form>
+            <button type="submit">Agregar</button>
+        </div>
 
-<h3 style="color:red;">
-    @Html.ValidationSummary()
-</h3>
-<a href="~/Admin/Generos/Index">Volver a la lista</a>
+        <h3 style="color:red;" id="error">
+            @Html.ValidationSummary()
+        </h3>
+        <a href="~/Admin/Generos/Index" id="back">Volver a la lista</a>
+
+    </form>
+
+
+</div>

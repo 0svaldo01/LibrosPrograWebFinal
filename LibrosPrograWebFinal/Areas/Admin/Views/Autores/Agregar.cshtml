@@ -1,24 +1,32 @@
 ﻿@model LibrosPrograWebFinal.Models.Autores
+@{
+    Layout = "_LayoutAdmin";
+}
+<div class="agg">
+    <h2>Agregar Autor</h2>
 
-<h2>Agregar Autor</h2>
+    <form method="post" action="~/Admin/Autores/Agregar">
+        <div>
+            <h3 id="h3">Datos del autor</h3>
+            <div>
+                <label for="NombreAutor">Nombre Completo:</label>
+                <input type="text" id="NombreAutor" name="NombreAutor" required />
+            </div>
+            <div>
+                <label for="FechaNacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="FechaNacimiento" name="FechaNacimiento" required />
+            </div>
+            <div>
+                <label for="Nacionalidad">Nacionalidad:</label>
+                <input type="text" id="Nacionalidad" name="Nacionalidad" required />
+            </div>
+            <button type="submit">Agregar</button>
+        </div>
+        <h3 style="color:red;" id="error">
+            @Html.ValidationSummary()
+        </h3>
+        <a href="~/Admin/Autores/Index" id="back">Volver a la lista</a>
+    </form>
 
-<form method="post" action="~/Admin/Autores/Agregar">
-    <div>
-        <label for="NombreAutor">Nombre Completo:</label>
-        <input type="text" id="NombreAutor" name="NombreAutor" required />
-    </div>
-    <div>
-        <label for="FechaNacimiento">Fecha de Nacimiento:</label>
-        <input type="date" id="FechaNacimiento" name="FechaNacimiento" required />
-    </div>
-    <div>
-        <label for="Nacionalidad">Nacionalidad:</label>
-        <input type="text" id="Nacionalidad" name="Nacionalidad" required />
-    </div>
-    <button type="submit">Agregar</button>
-</form>
 
-<h3 style="color:red;">
-    @Html.ValidationSummary()
-</h3>
-<a href="~/Admin/Autores/Index">Volver a la lista</a>
+</div>

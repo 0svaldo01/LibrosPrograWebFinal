@@ -1,13 +1,15 @@
 ﻿@model IEnumerable<LibrosPrograWebFinal.Models.Generosliterarios>
 @{
-    Layout = "_Layout";
+    Layout = "_LayoutAdmin";
 }
+
+<div class="indexAutores">
 <h1>Generos Registrados</h1>
-<a style="text-decoration:none" ; href="~/Admin/Generos/Agregar"><strong>Agregar Genero</strong><span style="margin:20px; font-size:15px;color:red;">+</span></a>
-<div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start;">
+    <a class="aG" ; href="~/Admin/Generos/Agregar"><strong>Agregar</strong><span style="margin:0px; font-size:15px;color:#49724B;">+</span></a>
+<div class="container" style="display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-start;">
     @foreach (var genero in Model)
     {
-        <div style="border: 1px solid #ccc; padding: 16px; width: 250px; border-radius: 4px;">
+        <div class="info">
             <input type="hidden" value="@genero.IdGenero" />
             <h3>@genero.NombreGenero</h3>
             <div>
@@ -16,4 +18,5 @@
             </div>
         </div>
     }
+</div>
 </div>

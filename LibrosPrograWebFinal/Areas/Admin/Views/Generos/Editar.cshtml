@@ -1,20 +1,30 @@
 ﻿@model LibrosPrograWebFinal.Models.Generosliterarios
+@{
+    Layout = "_LayoutAdmin";
+}
 
-<h2>Editar Genero literario</h2>
+<div class="agg">
+    <h2>Editar Genero literario</h2>
 
-<form method="post" action="~/Admin/Generos/Editar">
-    <div>
-        <input type="hidden" value="@Model.IdGenero" name="IdGenero" />
+    <form method="post" action="~/Admin/Generos/Editar">
+        <div>
+            <h3 id="h3">Datos a editar</h3>
+            <div>
+                <input type="hidden" value="@Model.IdGenero" name="IdGenero" />
 
-        <label for="NombreAutor">Nombre Completo:</label>
-        <input type="text" name="NombreGenero" value="@Model.NombreGenero" required />
-    </div>
-    <button type="submit">Aceptar </button>
-</form>
+                <label for="NombreAutor">Nombre del Genero:</label>
+                <input type="text" name="NombreGenero" value="@Model.NombreGenero" required />
+            </div>
+            <button type="submit">Aceptar </button>
+        </div>
 
-<h3 style="color:red;">
-    @Html.ValidationSummary()
-</h3>
+        <h3 style="color:red;" id="error">
+            @Html.ValidationSummary()
+        </h3>
 
-<a href="~/Admin/Generos/Index">Volver a la lista</a>
+        <a href="~/Admin/Generos/Index" id="back">Volver a la lista</a>
+    </form>
+
+
+</div>
 
