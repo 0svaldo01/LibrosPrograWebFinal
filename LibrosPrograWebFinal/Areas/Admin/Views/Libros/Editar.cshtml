@@ -5,7 +5,7 @@
 }
 <h1>Editar Libro</h1>
 
-<form action="~/Admin/Libros/Editar" method="post">
+<form action="~/Admin/Libros/Editar" method="post" enctype="multipart/form-data">
     
     <input type="hidden" asp-for="@Model.Libro.IdLibro"/>
 
@@ -39,9 +39,30 @@
         </select>
     </div>
     <br />
-    @Html.ValidationSummary()
+    <label>Imagen:</label><br/>
+    <input type="file" id="fileUpload1" accept="image/jpg" name="archivo" required /><br />
+    <img id="imagePreview" src="~/images/@(Model.Libro.IdLibro).jpg" alt="Vista previa de la imagen" /><br />
+
+
+    <p style="color:red;">@Html.ValidationSummary()</p>
     <div>
         <button type="submit">Editar Libro</button>
         <a href="~/Admin/Libros/Index">Cancelar</a>
     </div>
 </form>
+<script>
+    function mostrarImagen(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                document.querySelector('#imagePreview').src = e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    document.querySelector('#fileUpload1').addEventListener("change", event => {
+        mostrarImagen(event.target)
+    });
+
+</script>

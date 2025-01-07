@@ -10,6 +10,7 @@
     @foreach (var libro in Model.Libros)
     {
         <div>
+            <img src="~/images/@(libro.IdLibro).jpg" style="width:50px; height:50px;" alt="solo es una prueba" />
             <h2>@libro.Titulo</h2>
             <p><strong>Descripción:</strong> @libro.Descripcion</p>
             <p><strong>Autor:</strong> @libro.IdAutorNavigation.NombreAutor</p>

@@ -9,19 +9,19 @@ namespace LibrosPrograWebFinal.Areas.Admin.Controllers
     [Area("Admin")]
     public class LibrosController : Controller
     {
-		private readonly LibreriaprograwebContext context;
+        private readonly LibreriaprograwebContext context;
 
-		public LibrosController(LibreriaprograwebContext context)
+        public LibrosController(LibreriaprograwebContext context)
         {
-			this.context = context;
-		}
+            this.context = context;
+        }
         #region C.R.U.D
 
         #region Read
         public IActionResult Index()
         {
             IndexLibrosViewModel vm = new();
-            vm.Libros = context.Libros.OrderBy(x => x.Titulo).Include(x=>x.IdAutorNavigation).Include(x=>x.IdGeneroNavigation) ;
+            vm.Libros = context.Libros.OrderBy(x => x.Titulo).Include(x => x.IdAutorNavigation).Include(x => x.IdGeneroNavigation);
             vm.Autores = context.Autores.OrderBy(x => x.NombreAutor);
             vm.Generosliterarios = context.Generosliterarios.OrderBy(x => x.NombreGenero);
 
@@ -37,7 +37,7 @@ namespace LibrosPrograWebFinal.Areas.Admin.Controllers
 
             lib.Autores = context.Autores.OrderBy(x => x.NombreAutor);
             lib.Generosliterarios = context.Generosliterarios.OrderBy(x => x.NombreGenero);
-            
+
 
             return View(lib);
         }
@@ -45,6 +45,12 @@ namespace LibrosPrograWebFinal.Areas.Admin.Controllers
         public IActionResult Agregar(AgregarLibroViewModel l, IFormFile archivo1)
         {
             var existe = context.Libros.Any(x => x.IdLibro == l.Libro.IdLibro);
+
+            if (archivo1 == null) 
+            {
+                ModelState.AddModelError("", "Agrega una imagen  para la portada del libro");
+                return View(l);
+            }
 
 			if (archivo1.ContentType != "image/jpeg")
 			{
@@ -57,7 +63,8 @@ namespace LibrosPrograWebFinal.Areas.Admin.Controllers
 				return View(l);
 			}
 
-			if (existe)
+            #region Validaciones
+            if (existe)
             {
                 ModelState.AddModelError("", "El libro ya esta registrado");
             }
@@ -85,6 +92,8 @@ namespace LibrosPrograWebFinal.Areas.Admin.Controllers
             {
                 ModelState.AddModelError("", "Ingresa un autor");
             }
+            #endregion
+
             if (ModelState.IsValid)
             {
                 context.Add(l.Libro);
@@ -121,10 +130,30 @@ namespace LibrosPrograWebFinal.Areas.Admin.Controllers
             return View(lib);
         }
         [HttpPost]
-        public IActionResult Editar(AgregarLibroViewModel l)
+        public IActionResult Editar(AgregarLibroViewModel l, IFormFile archivo)
         {
+
+            if (archivo != null)
+            {
+                if(archivo == null) 
+                {
+                    ModelState.AddModelError("", "Agregar una imagen para la portada del libro");
+                    return View(l);
+                }
+                if (archivo.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("", "Solo están permitidas imagenes .jpg");
+                    return View(l);
+                }
+                if (archivo.Length > 1024 * 1024 * 5)
+                {
+                    ModelState.AddModelError("", "No se permiten imagenes mayores a 5MB");
+                    return View(l);
+                }
+            }
             var existe = context.Libros.FirstOrDefault(x => x.IdLibro == l.Libro.IdLibro && x.IdLibro != l.Libro.IdLibro);
 
+            #region Validaciones
             if (existe != null)
             {
                 ModelState.AddModelError("", "El libro ya esta registrado");
@@ -153,6 +182,7 @@ namespace LibrosPrograWebFinal.Areas.Admin.Controllers
             {
                 ModelState.AddModelError("", "Ingresa un autor");
             }
+            #endregion
 
             var libroedt = context.Libros.FirstOrDefault(x=>x.IdLibro == l.Libro.IdLibro);
 
@@ -173,6 +203,15 @@ namespace LibrosPrograWebFinal.Areas.Admin.Controllers
 
                 context.Update(libroedt);
                 context.SaveChanges();
+
+                if (archivo != null) 
+                {
+                    var path = "wwwroot/images/" + l.Libro.IdLibro + ".jpg";
+                    FileStream fs = new FileStream(path, FileMode.Create);
+                    archivo.CopyTo(fs);
+                    fs.Close();
+                }
+
                 return Redirect("~/Admin/Libros/Index");
             }
 
@@ -207,6 +246,13 @@ namespace LibrosPrograWebFinal.Areas.Admin.Controllers
             {
                 context.Remove(libroelim);
                 context.SaveChanges();
+
+                var path = "wwwroot/images/" +libroelim.IdLibro + ".jpg";
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+
 
                 return Redirect("~/Admin/Libros");
             }
