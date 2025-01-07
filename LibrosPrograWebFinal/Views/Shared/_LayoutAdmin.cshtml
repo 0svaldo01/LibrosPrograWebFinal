@@ -10,11 +10,11 @@
     <header></header>
     <nav>
         <a href="~/Admin">Principal</a>
+        <a href="~/Admin/Libros">Administrar Libros</a>
         @if (User.IsInRole("Administrador"))
         {
                  <a href="~/Admin/Autores">Administrar Autores</a>
         }
-       
         <a href="~/Admin/Generos">Administrar Generos</a>
         <a href="~/Account/Logout">Cerrar sesión</a>
     </nav>

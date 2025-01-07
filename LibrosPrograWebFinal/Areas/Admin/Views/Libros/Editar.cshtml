@@ -1,0 +1,47 @@
+﻿@model LibrosPrograWebFinal.Areas.Admin.Models.AgregarLibroViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_LayoutAdmin";
+}
+<h1>Editar Libro</h1>
+
+<form action="~/Admin/Libros/Editar" method="post">
+    
+    <input type="hidden" asp-for="@Model.Libro.IdLibro"/>
+
+    <div>
+        <label for="Titulo">Título</label><br />
+        <input type="text" asp-for="@Model.Libro.Titulo" required />
+    </div>
+    <div>
+        <label for="Descripcion">Descripción</label><br />
+        <textarea asp-for="@Model.Libro.Descripcion" class="form-control" rows="4" required></textarea>
+    </div>
+    <br />
+    <div>
+        <label for="FechaPublicacion">Fecha de Publicación</label><br />
+        <input type="number" asp-for="@Model.Libro.AñoPublicacion" min="1000" max="9999" required />
+    </div>
+    <br />
+    <div>
+        <label>Autor</label><br />
+        <select required="required" asp-for="Libro.IdAutor"
+                asp-items="@(new SelectList(Model.Autores, "IdAutor","NombreAutor" ))">
+            <option selected="selected">-- Seleccionar autor --</option>
+        </select>
+    </div>
+    <br />
+    <div>
+        <label for="IdGenero">Género</label><br />
+        <select required="required" asp-for="Libro.IdGenero"
+                asp-items="@(new SelectList(Model.Generosliterarios, "IdGenero","NombreGenero" ))">
+            <option selected="selected">-- Seleccionar genero --</option>
+        </select>
+    </div>
+    <br />
+    @Html.ValidationSummary()
+    <div>
+        <button type="submit">Editar Libro</button>
+        <a href="~/Admin/Libros/Index">Cancelar</a>
+    </div>
+</form>

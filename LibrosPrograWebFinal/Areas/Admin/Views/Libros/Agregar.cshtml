@@ -1,0 +1,67 @@
+﻿@model LibrosPrograWebFinal.Areas.Admin.Models.AgregarLibroViewModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_LayoutAdmin";
+}
+<h1>Agregar Libro</h1>
+
+<form action="~/Admin/Libros/Agregar" method="post" enctype="multipart/form-data">
+    <div>
+        <label for="Titulo">Título</label><br />
+        <input type="text" name="Libro.Titulo"  required />
+    </div>
+    <div>
+        <label for="Descripcion">Descripción</label><br />
+        <textarea name="Libro.Descripcion" class="form-control" rows="4" required></textarea>
+    </div>
+    <br />
+    <div>
+        <label for="FechaPublicacion">Año de Publicación</label><br />
+        <input type="number"  name="Libro.AñoPublicacion" min="1000" max="9999" required />
+    </div>
+    <br />
+    <div>
+        <label>Autor</label><br />
+        <select required="required" asp-for="Libro.IdAutor"
+                asp-items="@(new SelectList(Model.Autores, "IdAutor","NombreAutor" ))">
+            <option selected="selected">-- Seleccionar autor --</option>
+        </select>
+    </div>
+    <br />
+    <div>
+        <label for="IdGenero">Género</label><br />
+        <select required="required" asp-for="Libro.IdGenero"
+                asp-items="@(new SelectList(Model.Generosliterarios, "IdGenero","NombreGenero" ))">
+            <option selected="selected" >-- Seleccionar genero --</option>
+        </select>
+    </div>
+    <br />
+    <div>
+        <label>Imagen:</label><br />
+        <input type="file" id="fileUpload1" accept="image/jpg" name="archivo1" /><br />
+        <img id="imagePreview" src="~/images/blank.png" alt="Vista previa de la imagen" />
+    </div>
+
+    <br />
+        @Html.ValidationSummary()
+    <div>
+        <button type="submit" >Agregar Libro</button>
+        <a href="~/Admin/Libros/Index" >Cancelar</a>
+    </div>
+</form>
+<script>
+    function mostrarImagen(input){
+        if (input.files && input.files[0]){
+            var reader=new FileReader();
+            reader.onload=function(e){
+                document.querySelector('#imagePreview').src=e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    document.querySelector('#fileUpload1').addEventListener("change",event=>{
+        mostrarImagen(event.target)
+    });
+
+</script>

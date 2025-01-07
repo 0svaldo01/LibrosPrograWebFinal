@@ -1,0 +1,24 @@
+﻿@model LibrosPrograWebFinal.Areas.Admin.Models.IndexLibrosViewModel
+@{
+    Layout = "_LayoutAdmin";
+}
+<h1>Libros Registrados</h1>
+
+<a href="~/Admin/Libros/Agregar">Agregar<strong>+</strong> </a>
+
+<div>
+    @foreach (var libro in Model.Libros)
+    {
+        <div>
+            <h2>@libro.Titulo</h2>
+            <p><strong>Descripción:</strong> @libro.Descripcion</p>
+            <p><strong>Autor:</strong> @libro.IdAutorNavigation.NombreAutor</p>
+            <p><strong>Género:</strong> @libro.IdGeneroNavigation.NombreGenero</p>
+
+            <div>
+                <a href="~/Admin/Libros/Editar/@libro.IdLibro">Editar</a> |
+                <a href="~/Admin/Libros/Eliminar/@libro.IdLibro">Eliminar</a>
+            </div>
+        </div>
+    }
+</div> 
