@@ -162,10 +162,10 @@ html {
     .indexAutores .a {
         text-align: right;
         color: #49724B;
-        margin: 10px 10px 10px 1350px;
+        margin: 10px 10px 10px 50px;
     }
 
-/*AGREGAR/EDITAR*/
+/*AGREGAR/EDITAR/ELIMINAR*/
 
 .agg h2 {
     margin-top:15px;
