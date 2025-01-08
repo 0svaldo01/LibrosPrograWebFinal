@@ -7,7 +7,7 @@
 <div class="agg">
     <h2>Editar Libro</h2>
 
-    <form action="~/Admin/Libros/Editar" method="post">
+    <form action="~/Admin/Libros/Editar" method="post" enctype="multipart/form-data">
 
         <div>
             <h3 id="h3">Libro a editar</h3>
@@ -46,6 +46,12 @@
                 </select>
             </div>
             <br />
+            <div>
+                <label>Imagen:</label><br />
+                <input type="file" id="fileUpload1" accept="image/jpg" name="archivo1" /><br />
+                <img style="display:block;width;150px; height:200px; margin:auto; box-sizing:border-box;"
+                     id="imagePreview" src="~/images/blank.png" alt="Vista previa de la imagen" />
+            </div>
 
         </div>
         @Html.ValidationSummary()
@@ -59,3 +65,19 @@
     </form>
 
 </div>
+<script>
+    function mostrarImagen(input){
+        if (input.files && input.files[0]){
+            var reader=new FileReader();
+            reader.onload=function(e){
+                document.querySelector('#imagePreview').src=e.target.result;
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    document.querySelector('#fileUpload1').addEventListener("change",event=>{
+        mostrarImagen(event.target)
+    });
+
+</script>
