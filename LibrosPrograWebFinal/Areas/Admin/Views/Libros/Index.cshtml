@@ -2,24 +2,26 @@
 @{
     Layout = "_LayoutAdmin";
 }
-<h1>Libros Registrados</h1>
 
-<a href="~/Admin/Libros/Agregar">Agregar<strong>+</strong> </a>
+<div class="indexAutores">
+    <h1>Libros Registrados</h1>
 
-<div>
-    @foreach (var libro in Model.Libros)
-    {
-        <div>
-            <img src="~/images/@(libro.IdLibro).jpg" style="width:50px; height:50px;" alt="solo es una prueba" />
-            <h2>@libro.Titulo</h2>
-            <p><strong>Descripción:</strong> @libro.Descripcion</p>
-            <p><strong>Autor:</strong> @libro.IdAutorNavigation.NombreAutor</p>
-            <p><strong>Género:</strong> @libro.IdGeneroNavigation.NombreGenero</p>
+    <a class="a" href="~/Admin/Libros/Agregar">Agregar<strong>+</strong> </a>
 
-            <div>
-                <a href="~/Admin/Libros/Editar/@libro.IdLibro">Editar</a> |
-                <a href="~/Admin/Libros/Eliminar/@libro.IdLibro">Eliminar</a>
+    <div class="container">
+        @foreach (var libro in Model.Libros)
+        {
+            <div class="info">
+                <h2>@libro.Titulo</h2>
+                <p><strong>Descripción:</strong> @libro.Descripcion</p>
+                <p><strong>Autor:</strong> @libro.IdAutorNavigation.NombreAutor</p>
+                <p><strong>Género:</strong> @libro.IdGeneroNavigation.NombreGenero</p>
+
+                <div>
+                    <a href="~/Admin/Libros/Editar/@libro.IdLibro">Editar</a> |
+                    <a href="~/Admin/Libros/Eliminar/@libro.IdLibro">Eliminar</a>
+                </div>
             </div>
-        </div>
-    }
-</div> 
+        }
+    </div>
+</div>

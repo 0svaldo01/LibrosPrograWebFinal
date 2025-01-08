@@ -3,66 +3,59 @@
 @{
     Layout = "_LayoutAdmin";
 }
-<h1>Editar Libro</h1>
 
-<form action="~/Admin/Libros/Editar" method="post" enctype="multipart/form-data">
-    
-    <input type="hidden" asp-for="@Model.Libro.IdLibro"/>
+<div class="agg">
+    <h2>Editar Libro</h2>
 
-    <div>
-        <label for="Titulo">Título</label><br />
-        <input type="text" asp-for="@Model.Libro.Titulo" required />
-    </div>
-    <div>
-        <label for="Descripcion">Descripción</label><br />
-        <textarea asp-for="@Model.Libro.Descripcion" class="form-control" rows="4" required></textarea>
-    </div>
-    <br />
-    <div>
-        <label for="FechaPublicacion">Fecha de Publicación</label><br />
-        <input type="number" asp-for="@Model.Libro.AñoPublicacion" min="1000" max="9999" required />
-    </div>
-    <br />
-    <div>
-        <label>Autor</label><br />
-        <select required="required" asp-for="Libro.IdAutor"
-                asp-items="@(new SelectList(Model.Autores, "IdAutor","NombreAutor" ))">
-            <option selected="selected">-- Seleccionar autor --</option>
-        </select>
-    </div>
-    <br />
-    <div>
-        <label for="IdGenero">Género</label><br />
-        <select required="required" asp-for="Libro.IdGenero"
-                asp-items="@(new SelectList(Model.Generosliterarios, "IdGenero","NombreGenero" ))">
-            <option selected="selected">-- Seleccionar genero --</option>
-        </select>
-    </div>
-    <br />
-    <label>Imagen:</label><br/>
-    <input type="file" id="fileUpload1" accept="image/jpg" name="archivo" required /><br />
-    <img id="imagePreview" src="~/images/@(Model.Libro.IdLibro).jpg" alt="Vista previa de la imagen" /><br />
+    <form action="~/Admin/Libros/Editar" method="post">
 
+        <div>
+            <h3 id="h3">Libro a editar</h3>
+            <input type="hidden" asp-for="@Model.Libro.IdLibro" />
 
-    <p style="color:red;">@Html.ValidationSummary()</p>
-    <div>
-        <button type="submit">Editar Libro</button>
-        <a href="~/Admin/Libros/Index">Cancelar</a>
-    </div>
-</form>
-<script>
-    function mostrarImagen(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                document.querySelector('#imagePreview').src = e.target.result;
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+            <div>
+                <label for="Titulo">Título</label><br />
+                <input type="text" asp-for="@Model.Libro.Titulo" required />
+            </div>
+            <div>
+                <label for="Descripcion">Descripción</label><br />
+                <textarea style="width:93%; margin-top:10px; margin-left:15px; margin-bottom:10px; border:1px solid #49724B;"
+                          asp-for="@Model.Libro.Descripcion" class="form-control" rows="4" required id="input"></textarea>
+            </div>
+            <br />
+            <div>
+                <label for="FechaPublicacion">Fecha de Publicación</label><br />
+                <input type="number" asp-for="@Model.Libro.AñoPublicacion" min="1000" max="9999" required />
+            </div>
+            <br />
+            <div>
+                <label>Autor</label><br />
+                <select style="width:93%; margin-top:10px; margin-left:15px; margin-bottom:10px; border:1px solid #49724B; height:25px;"
+                        required="required" asp-for="Libro.IdAutor"
+                        asp-items="@(new SelectList(Model.Autores, "IdAutor","NombreAutor" ))" id="input">
+                    <option selected="selected">-- Seleccionar autor --</option>
+                </select>
+            </div>
+            <br />
+            <div>
+                <label for="IdGenero">Género</label><br />
+                <select style="width:93%; margin-top:10px; margin-left:15px; margin-bottom:10px; border:1px solid #49724B; height:25px;"
+                        required="required" asp-for="Libro.IdGenero"
+                        asp-items="@(new SelectList(Model.Generosliterarios, "IdGenero","NombreGenero" ))" id="input">
+                    <option selected="selected">-- Seleccionar genero --</option>
+                </select>
+            </div>
+            <br />
 
-    document.querySelector('#fileUpload1').addEventListener("change", event => {
-        mostrarImagen(event.target)
-    });
+        </div>
+        @Html.ValidationSummary()
+        <h3 style="color:red;" id="error">
+            @Html.ValidationSummary()
+        </h3>
+        <div>
+            <button type="submit">Editar Libro</button>
+            <a href="~/Admin/Libros/Index" id="back">Cancelar</a>
+        </div>
+    </form>
 
-</script>
+</div>

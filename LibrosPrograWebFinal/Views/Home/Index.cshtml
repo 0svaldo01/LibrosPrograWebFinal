@@ -1,17 +1,23 @@
 ﻿@model IEnumerable<LibrosPrograWebFinal.Models.Libros>
 @{
-	Layout = "_Layout";
+    Layout = "_Layout";
 }
-@foreach (var lib in Model)
-{
-	<a href="~/DetallesLibro/@lib.Titulo.Replace(" ","-")" style="text-decoration: none; color: inherit;">
-		<div style="border: 1px solid #ddd; padding: 15px; width: 200px; text-align: center;">
-			<img src="~/images/blank.png" alt="Portada de @lib.Titulo" style="width: 100%; height: auto; margin-bottom: 10px;">
-			<h3>@lib.Titulo</h3>
-			<p><strong>Autor:</strong>@lib.IdAutorNavigation.NombreAutor</p>
-			<p><strong>Año:</strong>@lib.AñoPublicacion</p>
-			<p><strong>Género:</strong> @lib.IdGeneroNavigation.NombreGenero</p>
-		</div>
-	</a>
-}
+
+<div class="indexPrincipal">
+    <div class="c">
+        @foreach (var lib in Model)
+        {
+            <a href="~/DetallesLibro/@lib.Titulo.Replace(" ","-")" style="text-decoration: none; color: inherit;">
+                <div style="border: 1px solid #ddd; padding: 15px; width: 200px; text-align: center; height:450px;box-sizing:border-box:border-box;">
+                    <img src="~/images/blank.png" alt="Portada de @lib.Titulo" style="width: 100%; height: 300px; border:1px solid black; margin-bottom: 10px;">
+                    <h3 style="height:45px;">@lib.Titulo</h3>
+                    <p style="font-size:14px;"><strong>Año:</strong>@lib.AñoPublicacion</p>
+                    <p style="font-size:14px;"><strong>Género:</strong> @lib.IdGeneroNavigation.NombreGenero</p>
+                    <p style="font-size:14px;"><strong>Autor:</strong>@lib.IdAutorNavigation.NombreAutor</p>
+
+                </div>
+            </a>
+        }
+    </div>
+</div>
 

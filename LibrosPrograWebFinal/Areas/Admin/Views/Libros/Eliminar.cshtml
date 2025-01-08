@@ -15,9 +15,11 @@
 			<input type="text" name="Titulo" value="@Model.Titulo" readonly /><br />
 
 		</div>
-		
+
 		<p style="color:red; font-size:16px;">@Html.ValidationSummary()</p>
 
 		<button type="submit">Eliminar</button>
+		<a href="~/Admin/Libros/Index" id="backC">Cancelar</a>
 	</form>
-	<a href="~/Admin/Libros/Index">Cancelar</a>
+
+</div>

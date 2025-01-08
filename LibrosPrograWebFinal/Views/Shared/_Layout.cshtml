@@ -4,9 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index - Lista de Libros</title>
+    <link href="~/estilos/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Biblioteca - Libros Disponibles</h1>
+    <div class="indexPrincipal">
+    <nav>
+        <div class="imgContainer">
+            <img src="~/images/h3.png" alt="header">
+            <img id="img2" src="~/images/h2.png" alt="header">
+        </div>
+    </nav>
+    <header>
+        <h1>Biblioteca</h1>
+        <span>Buscar Libro: <input type="search" /></span>
+    </header>
+
+    </div>
     <div style="display: flex; flex-wrap: wrap; gap: 20px;">
         @RenderBody()
     </div>

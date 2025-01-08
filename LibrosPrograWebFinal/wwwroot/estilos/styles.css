@@ -51,12 +51,17 @@ html {
     border-radius: 20px;
     height: 45px;
     margin-top: 7px;
+    box-sizing:border-box;
     border: solid #49724B 1px;
 }
+    .form input{
+        
+        padding-left: 20px;
+    }
 
 .form input::placeholder{
     color: #49724B;
-    padding-left: 10px;
+   
 }
 
 
@@ -216,6 +221,8 @@ html {
 
 .agg #error {
     text-align: center;
+    color:red;
+    margin:10px;
 }
 
 .agg form button {
@@ -243,3 +250,84 @@ html {
     color: #49724B;
     margin: 10px 10px 10px 1370px;
 }
+
+header, .head {
+    height: 50px;
+    color: white;
+    background: #49724B;
+    padding: 5px;
+    position: sticky;
+    top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    header input {
+        padding: 5px;
+        margin-left: 10px;
+    }
+
+.indexPrincipal img {
+    width: 65%;
+    margin: auto;
+    height: 150px;
+}
+
+.indexPrincipal #img2 {
+    width: 30%;
+    margin: auto;
+    height: 150px;
+}
+
+.imgContainer {
+    width: 100%;
+    display: block;
+}
+
+.indexPrincipal .c {
+    width: 95%;
+    padding-left: 30px;
+    margin: auto;
+}
+
+.indexPrincipal a {
+    display: inline-block;
+    border: 1.5px solid #49724B;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: black;
+}
+.detalles{
+    display:block;
+    margin:auto;
+  
+}
+.detalles h1 {
+    text-align: center;
+}
+
+.detalles img {
+    border: 1px solid black;
+    height: 300px;
+    width: 200px;
+    display: block;
+}
+
+.detalles p {
+    margin: 10px;
+    font-size: 15px;
+}
+
+.detalles h2 {
+    text-align: center;
+}
+
+.detalles a {
+    margin-top: 120px;
+    margin-left: 250px;
+    color: #49724B;
+    border: none;
+}
+
