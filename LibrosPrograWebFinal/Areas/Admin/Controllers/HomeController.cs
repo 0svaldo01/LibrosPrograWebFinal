@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace LibrosPrograWebFinal.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles ="Administrador")]
     [Authorize]
     public class HomeController : Controller
     {

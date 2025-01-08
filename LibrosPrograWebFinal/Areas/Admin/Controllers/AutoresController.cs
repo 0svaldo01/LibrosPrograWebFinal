@@ -1,10 +1,13 @@
 ﻿using LibrosPrograWebFinal.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibrosPrograWebFinal.Areas.Admin.Controllers
 {
     [Area("Admin")]
+	[Authorize(Roles = "Administrador")]
+	[Authorize]
     public class AutoresController : Controller
     {
         private readonly LibreriaprograwebContext context;

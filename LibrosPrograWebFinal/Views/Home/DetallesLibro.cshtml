@@ -6,7 +6,7 @@
 <div class="detalles">
     <h1>Detalles del Libro</h1>
     <div style="border: 1px solid #49724B; padding: 20px; max-width: 600px; margin: auto; display: flex; align-items: flex-start; gap: 20px;">
-        <img src="~/images/blank.png">
+        <img src="~/images/@(Model.IdLibro).jpg">
         <div>
             <h2>@Model.Titulo</h2>
             <p><strong>Autor:</strong>@Model.IdAutorNavigation.NombreAutor</p>
